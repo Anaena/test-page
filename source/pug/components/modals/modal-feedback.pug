@@ -1,0 +1,16 @@
+mixin modal-feedback()
+  .modal-feedback
+    .modal-feedback__header
+      h2.modal-feedback__title Заказать звонок
+    .modal-feedback__form(data-validate)
+      form(action="#")
+        .modal-feedback__form-wrapper
+          +custom-input({inputType: "text", inputPlaceholder: "Ваше имя*", inputError: "Ваше имя*", inputName: "user-name", inputMinLength: "2"})(data-validate-type="text", data-limitations="letters")
+
+          +custom-input({inputType: "tel", inputPlaceholder: "Телефон*", inputError: "Телефон*", inputName: "user-phone"})(data-validate-type="phone")
+
+          +custom-textarea({inputPlaceholder: "Введите сообщение...", inputName: "user-info"})
+
+          +custom-toggle({inputLabel: "Согласен на обработку <span>персональных данных</span>", inputName: "user-agreement", inputChecked: true})(data-validate-type="checkbox").custom-toggle--checkbox
+
+          +btn({text: "Отправить", type: "submit"}).btn--yellow

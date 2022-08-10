@@ -1,0 +1,30 @@
+doctype html
+
+include ../components
+
+block variables
+
+html(lang="ru")
+  head
+    title= title
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    meta(name="description", content="Katres — Самые лучшие сушильные камеры")
+    link(rel="preload", href="fonts/roboto-v29-latin_cyrillic-regular.woff2", as="font", crossorigin="anonymous")
+    link(rel="preload", href="fonts/roboto-v29-latin_cyrillic-500.woff2", as="font", crossorigin="anonymous")
+    link(rel="preload", href="fonts/roboto-v29-latin_cyrillic-700.woff2", as="font", crossorigin="anonymous")
+    link(rel="stylesheet", href="css/style.min.css")
+
+  body
+    +sprite()
+    .wrapper(class=wrapperMods)
+      if (hasHeader)
+        +header(headerMods, currentUrl)
+
+      block main
+
+    block modals
+
+    script(src="js/vendor.min.js")
+    script(src="js/main.min.js")

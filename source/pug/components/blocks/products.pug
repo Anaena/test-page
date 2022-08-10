@@ -1,0 +1,56 @@
+mixin products()
+  -
+    const productsLinks = [
+      {
+        class: "products__item--lg",
+        textYellow: "Стандартные&nbsp;",
+        textWite: " сушки",
+        img: "img-link-1",
+        width: "570",
+        height: "301"
+      },
+      {
+        textYellow: "Nordic Line",
+        img: "img-link-2",
+        width: "327",
+        height: "174"
+      },
+      {
+        class: "products__item--sm",
+        textYellow: "Высокотемпературные<br>",
+        textWite: " сушки",
+        img: "img-link-3",
+        width: "180",
+        height: "174"
+      },
+      {
+        textYellow: "Ленточные<br>",
+        textWite: " сушки",
+        img: "img-link-4",
+        width: "327",
+        height: "174"
+      },
+      {
+        textYellow: "Туннельные<br>",
+        textWite: " сушки",
+        img: "img-link-5",
+        width: "327",
+        height: "174"
+      },
+    ]
+
+  .products
+    .container
+      h2.products__title
+        +icon("icon-round", 34, 34)
+        span Продукция
+      ul.products__list
+        each link in productsLinks
+          li.products__item(class=link.class)
+            a.products__link(href="#")
+              .products__text
+                span.products__yellow !{link.textYellow}
+                if (link.textWite)
+                  span.products__wite !{link.textWite}
+              .products__img
+                +picture("content", link.img, "jpg", link.width, link.height, "Изображение оборудования")

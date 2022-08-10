@@ -1,0 +1,91 @@
+mixin header(headerMods, currentUrl)
+  -
+    const headerLinks = [
+      {
+        href: "#",
+        text: "О заводе"
+      },
+      {
+        href: "#",
+        text: "Новости"
+      },
+      {
+        href: "#",
+        text: "Сервис"
+      },
+      {
+        href: "#",
+        text: "Лизинг"
+      },
+      {
+        href: "#",
+        text: "Контакты"
+      },
+    ]
+
+  -
+    const productLinks = [
+      {
+        href: "#",
+        text: "Стандартные сушки"
+      },
+      {
+        href: "#",
+        text: "Ленточные сушки"
+      },
+      {
+        href: "#",
+        text: "Nordic Line"
+      },
+      {
+        href: "#",
+        text: "Высокотемпературные сушки"
+      },
+      {
+        href: "#",
+        text: "Туннельные сушки"
+      },
+    ]
+
+  header.header(class=headerMods)
+    .container
+      .header__wrapper
+        if(currentUrl === "index.html")
+          span.header__logo
+            +picture("content", "logo", "png", 333, 54, "Логотип").header__logo-icon
+        else
+          a.header__logo(href="index.html", aria-label="Переход на главную")
+            +picture("content", "logo", "png", 333, 54, "Логотип").header__logo-icon
+        nav.main-nav
+          button.main-nav__toggle(type="button", aria-label="Переключатель отображения меню", aria-pressed="false")
+            +icon("icon-burger", 19, 13)
+          .main-nav__wrapper.header__nav-wrapper
+            .main-nav__mobile-menu
+              .main-nav__top
+                ul.main-nav__list
+                  each link in headerLinks
+                    - const activeState = currentUrl === link.href
+                    li.main-nav__item
+                      if(activeState)
+                        span.main-nav__link.is-active=link.text
+                      else
+                        a.main-nav__link(href=link.href)=link.text
+              .main-nav__bottom
+                .main-nav__dropdown(data-dropdown="parent")
+                  button.btn.main-nav__company-links(data-dropdown="btn")
+                    span.btn__text Продукция
+                    +icon("icon-arrow", 12, 7).btn__icon
+                  ul.main-nav__product-list(data-dropdown="content")
+                    each link in productLinks
+                      li.main-nav__product-item
+                        a.main-nav__link(href=link.href)=link.text
+                a.btn.main-nav__company-links(href="#") Реализованные проекты
+                a.btn.btn--grey.main-nav__modal-btn(href="#", data-open-modal="request-call") Заказать звонок
+        .header__btn-box
+          a.btn.btn--link.header__btn-icon(href="mailto:Office@brightrich.ru")
+            +icon("icon-mail", 31, 31).btn__icon
+            span.btn__text info@katres.ru
+          a.btn.btn--link.header__btn-icon(href="tel:88006856944")
+            +icon("icon-phone", 31, 31).btn__icon
+            span.btn__text 8 800 685 69 44
+

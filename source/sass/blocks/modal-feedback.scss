@@ -1,0 +1,64 @@
+.modal-feedback {
+  &__header {
+    border-bottom: 1px solid $color-gainsboro-2;
+  }
+
+  &__title {
+    margin: 0 0 33px;
+
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 128.5%;
+
+    text-align: center;
+
+    color: $color-black;
+
+    @include vp-767 {
+      margin: 0 0 24px;
+      font-size: 20px;
+    }
+  }
+
+  &__form-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 33px 90px 0;
+
+    @include vp-767 {
+      padding: 23px 0 0;
+
+      .custom-input,
+      .custom-textarea {
+        margin: 0 17px;
+        padding-bottom: 16px;
+      }
+
+      .custom-input {
+        padding-bottom: 16px;
+      }
+
+      .custom-textarea {
+        padding-bottom: 24px;
+      }
+
+      .custom-toggle {
+        margin: 0 auto;
+        max-width: 210px;
+        padding-bottom: 24px;
+      }
+    }
+  }
+
+  .btn {
+    margin: 0 auto;
+
+    @include vp-767 {
+      width: 100%;
+      margin: 0;
+      padding: 23px 16px 26px;
+      border-radius: 0 0 14px 14px;
+    }
+  }
+}

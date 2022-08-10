@@ -1,0 +1,376 @@
+.main-nav {
+  max-width: 56.7%;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  @include vp-1023 {
+    max-width: none;
+    width: auto;
+    order: 1;
+  }
+
+  .main-nav__wrapper {
+    // padding: 0 60px;
+    padding: 0 54px;
+
+    @include vp-1279 {
+      padding: 0 34px;
+    }
+
+    @include vp-1023 {
+      position: absolute;
+      top: 66px;
+      left: 0;
+      right: 0;
+
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+
+      width: 100%;
+      height: calc(100vh - 66px);
+      height: calc((100 * var(--vh, 1vh)) - 66px);
+
+      padding: 2px 16px;
+      // display: flex;
+      // flex-direction: column;
+      // align-items: flex-start;
+      // align-content: flex-start;
+      background-color: $color-default-white;
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      transition: visibility $trans-default, opacity $trans-default;
+    }
+
+    @include vp-767 {
+      top: 74px;
+      height: calc(100vh - 74px);
+      height: calc((100 * var(--vh, 1vh)) - 74px);
+    }
+  }
+
+  &__mobile-menu {
+    @include vp-1023 {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      align-content: flex-start;
+      margin-bottom: 33px;
+      padding-bottom: 73px;
+    }
+  }
+
+  &__top {
+    padding: 6px 0;
+
+    @include vp-1023 {
+      width: 100%;
+      padding: 0;
+      order: 1;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-wrap: wrap;
+
+    @include vp-1023 {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin: 0;
+    margin-right: -53px;
+    // margin-right: 20px;
+    // margin-left: 60px;
+    padding: 0;
+
+    list-style: none;
+
+    @include vp-1023 {
+      display: flex;
+      flex-direction: column;
+      margin-right: 0;
+    }
+  }
+
+  &__item {
+    margin-right: 53px;
+    margin-bottom: 4px;
+
+    @include vp-1279 {
+      margin-right: 34px;
+    }
+
+    @include vp-1023 {
+      padding: 15px 0;
+      margin-bottom: 0;
+      margin-right: 0;
+      border-bottom: 1px solid $color-gainsboro-2;
+    }
+  }
+
+  &__link {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: $color-grey;
+
+    transition: color $trans-default, background-color $trans-default;
+
+
+    @include vp-1023 {
+      padding-left: 14px;
+
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 23px;
+      color: $color-black;
+    }
+
+    &.is-active {
+      color: $color-black;
+    }
+
+    @media (hover: hover), screen and (min-width: 0\0) {
+      &:hover {
+        color: $color-black;
+
+        @include vp-1023 {
+          color: $color-grey;
+        }
+      }
+    }
+  }
+
+  &__toggle {
+    display: none;
+
+    @include vp-1023 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      padding: 5px;
+      border: 0;
+      border-radius: 50%;
+      background-color: $color-school-bus-yellow;
+
+      width: 31px;
+      height: 31px;
+
+      cursor: pointer;
+      transition: color $trans-default, background-color $trans-default, opacity $trans-default;
+
+      svg {
+        margin: 0;
+
+        width: 19px;
+        height: 13px;
+        flex-shrink: 0;
+      }
+
+      @include vp-767 {
+        width: 39px;
+        height: 39px;
+      }
+
+      @media (hover: hover), screen and (min-width: 0\0) {
+        &:hover {
+          background-color: $color-paris-daisy;
+        }
+
+        &:active {
+          background-color: $color-tangerine-yellow;
+        }
+      }
+    }
+  }
+
+  &__company-links {
+    margin-right: 38px;
+    padding: 8px;
+    padding-left: 0;
+    color: $color-black;
+    background-color: transparent;
+
+    @include vp-1279 {
+      margin-right: 6px;
+    }
+
+    @include vp-1023 {
+      width: 100%;
+      padding: 15.5px 14px;
+      margin-right: 0;
+      border-bottom: 1px solid $color-gainsboro-2;
+    }
+
+    @media (hover: hover), screen and (min-width: 0\0) {
+      &:hover {
+        color: $color-grey;
+      }
+    }
+  }
+
+  &__dropdown {
+    position: relative;
+
+    margin-right: 37px;
+
+    @include vp-1279 {
+      margin-right: 6px;
+    }
+
+    @include vp-1023 {
+      margin-right: 0;
+    }
+
+    @media (hover: hover), screen and (min-width: 0\0) {
+      &:hover,
+      &:focus-within {
+        .btn {
+          &::before {
+            width: 102%;
+            height: 70px;
+          }
+        }
+
+        .main-nav__product-list {
+          opacity: 1;
+          visibility: visible;
+          z-index: 10;
+        }
+      }
+    }
+
+    .btn {
+      position: relative;
+      margin-right: 0;
+
+      &::before {
+        position: absolute;
+        content: "";
+        bottom: -105%;
+        left: -44px;
+        right: 0;
+
+        @include vp-1023 {
+          display: none;
+        }
+      }
+    }
+
+    .main-nav__product-list {
+      opacity: 0;
+      visibility: hidden;
+
+      @include vp-1023 {
+        opacity: 1;
+        visibility: visible;
+        display: none;
+      }
+    }
+  }
+
+  &__dropdown.is-active {
+    @include vp-1023 {
+      .main-nav__product-list {
+        display: flex;
+        flex-direction: column;
+        opacity: 1;
+        visibility: visible;
+        height: auto;
+      }
+
+      .btn__icon {
+        transform: rotate(180deg) translateZ(0);
+      }
+    }
+  }
+
+  &__product-list {
+    position: absolute;
+    transform: translateY(100%);
+    bottom: -16px;
+    left: -44px;
+    margin: 0;
+    padding: 12px 20px 10px;
+    list-style: none;
+
+    width: 427px;
+    min-height: 266px;
+
+    background-color: $color-default-white;
+    box-shadow: 0 9px 7px rgba(0, 0, 0, 0.25);
+
+    transition: opacity $trans-default, transform $trans-default, height $trans-default;
+
+    @include vp-1023 {
+      position: static;
+      height: 0;
+      width: 100%;
+      min-height: auto;
+
+      padding: 10px 0 15px;
+
+      transform: translateY(0);
+      box-shadow:none;
+
+      border-bottom: 1px solid $color-gainsboro-2;
+    }
+  }
+
+  &__product-item {
+    margin-bottom: 4px;
+    padding: 10px 0;
+
+    @include vp-1023 {
+      margin-bottom: 0;
+      padding: 5px 0 4px;
+    }
+
+    a {
+      padding-left: 20px;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      color: $color-black;
+
+      @include vp-1023 {
+        padding-left: 12px;
+      }
+
+      @media (hover: hover), screen and (min-width: 0\0) {
+        &:hover {
+          font-weight: 600;
+          color: $color-black;
+        }
+      }
+    }
+  }
+
+  &__product-item:not(:last-child) {
+    border-bottom: 1px solid $color-gainsboro-2;
+
+    @include vp-1023 {
+      border-bottom: none;
+    }
+  }
+
+  &__modal-btn {
+    @include vp-1023 {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+}
